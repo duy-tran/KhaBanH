@@ -19,7 +19,7 @@
 </head>
 <body>
 <b-container id="app">
-  <h3>Random Cap Generator</h3>
+  <h3>Khá BảnH teXt GeNeRatoR</h3>
   <div class="d-flex flex-row-reverse bd-highlight">
     <div class="p-2 bd-highlight">
       <span v-if="result">
@@ -29,55 +29,15 @@
     <div style="visibility: hidden;" class="p-2 bd-highlight"><b-button variant="outline-primary">Dummy button</b-button></div>
   </div>
   <b-row>
-    <b-col cols="12" sm="12" md="6">
-    <b-form-textarea id="input-large" size="lg" type="text" v-model.lazy="input" rows="3"
+    <b-col cols="12" sm="12" lg="6">
+      <b-form-textarea id="input-large" size="lg" type="text" v-model.lazy="input" rows="3"
       max-rows="20" placeholder="Type here" />
     </b-col>
-    <b-col id="random_result" cols="12" sm="12" md="6">
-    {{change(input.toLowerCase(),0)}}
+    <b-col id="random_result" cols="12" sm="12" lg="6">
+      {{change(input.toLowerCase(),0)}}
     </b-col>
   </b-row>
        
 </b-container>
-<script type="text/javascript">
-var app = new Vue({
-  el: '#app',
-  data: {
-    input: '',
-    title: 'Random cap generator',
-    result: ''
-  },
-  methods: {
-    change: function (text, flag) {
-      if (flag == 1) {
-        this.result = "";
-      }
-      var idx = this.getStartingIndex(this.result.toLowerCase(),text);
-      this.result = this.result.substr(0,idx);
-      for (var i=idx; i<text.length; i++) {
-        if (Math.random() > 0.5) {
-          this.result += text[i].toLowerCase();
-        } else {
-          this.result += text[i].toUpperCase();
-        }
-      }
-      return this.result;
-    },
-    getStartingIndex: function(str1, str2) {
-      var min = Math.min(str1.length, str2.length);
-      for (var i=0; i<min; i++) {
-        if (str1[i] != str2[i]) {
-          return i;
-        }
-      }
-      return min;
-    },
-    newRandomize: function(event) {
-      this.result = "420";
-     document.getElementById("random_result").innerHTML = this.result;
-    }
-  }
-});
-Vue.config.devtools = true;
-</script>
+<script src="app.js"></script>
 </body>
