@@ -3,23 +3,17 @@
 <head>
   <title>Khá BảnH Generator</title>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+  <link rel="icon" type="image/ico" href="favicon.ico"/>
   <link rel="stylesheet" type="text/css" href="custom.css">
-  <!-- Add this to <head> -->
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
-  />
-
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
   <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
   <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 </head>
 <body>
 <b-container id="app">
-  <h3>Khá BảnH teXt GeNeRatoR</h3>
+  <h3>RaNdoM caP teXt GeNeRatoR</h3>
   <div class="d-flex flex-row-reverse bd-highlight">
     <div class="p-2 bd-highlight">
       <span v-if="result">
@@ -34,7 +28,9 @@
       max-rows="20" placeholder="Type here" />
     </b-col>
     <b-col id="random_result" cols="12" sm="12" lg="6">
-      {{change(input.toLowerCase(),0)}}
+      <h6>
+        {{change(input.toLowerCase(),0)}}
+      </h6>
     </b-col>
   </b-row>
        
