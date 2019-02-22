@@ -29,10 +29,6 @@ var app = new Vue({
         }
       }
       return min;
-    },
-    newRandomize: function(event) {
-      this.result = "420";
-     document.getElementById("random_result").innerHTML = this.result;
     }
   }
 });
