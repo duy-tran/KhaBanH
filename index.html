@@ -20,11 +20,22 @@
 <body>
 <b-container id="app">
   <h3>Random Cap Generator</h3>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight">
+      <span v-if="result">
+        <b-button variant="outline-primary" v-on:click="change(input,1)">Lại</b-button>
+      </span>
+    </div>
+    <div style="visibility: hidden;" class="p-2 bd-highlight"><b-button variant="outline-primary">Dummy button</b-button></div>
+  </div>
   <b-row>
-    <b-form-textarea id="input-large" size="lg" type="text" v-model.lazy="input" placeholder="Type here" />
-  </b-row>
-  <b-row>
-    {{change(input)}}
+    <b-col cols="12" sm="12" md="6">
+    <b-form-textarea id="input-large" size="lg" type="text" v-model.lazy="input" rows="3"
+      max-rows="20" placeholder="Type here" />
+    </b-col>
+    <b-col id="random_result" cols="12" sm="12" md="6">
+    {{change(input.toLowerCase(),0)}}
+    </b-col>
   </b-row>
        
 </b-container>
@@ -37,8 +48,11 @@ var app = new Vue({
     result: ''
   },
   methods: {
-    change: function (text) {
-      var idx = this.getStartingIndex(this.result.toLowerCase(),text.toLowerCase());
+    change: function (text, flag) {
+      if (flag == 1) {
+        this.result = "";
+      }
+      var idx = this.getStartingIndex(this.result.toLowerCase(),text);
       this.result = this.result.substr(0,idx);
       for (var i=idx; i<text.length; i++) {
         if (Math.random() > 0.5) {
@@ -57,6 +71,10 @@ var app = new Vue({
         }
       }
       return min;
+    },
+    newRandomize: function(event) {
+      this.result = "420";
+     document.getElementById("random_result").innerHTML = this.result;
     }
   }
 });
