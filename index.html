@@ -19,9 +19,9 @@
 </head>
 <body>
 <b-container id="app">
-  <h3>Random cap generator</h3>
+  <h3>Random Cap Generator</h3>
   <b-row>
-    <b-form-textarea id="input-large" size="lg" type="text" v-model="input" placeholder="Type here" />
+    <b-form-textarea id="input-large" size="lg" type="text" v-model.lazy="input" placeholder="Type here" />
   </b-row>
   <b-row>
     {{change(input)}}
@@ -29,26 +29,37 @@
        
 </b-container>
 <script type="text/javascript">
-  var app = new Vue({
+var app = new Vue({
   el: '#app',
   data: {
-    input: ''
+    input: '',
+    title: 'Random cap generator',
+    result: ''
   },
   methods: {
     change: function (text) {
-      var result = "";
-      var temp = text.toLowerCase();
-      for (var i=0; i<temp.length; i++) {
+      var idx = this.getStartingIndex(this.result.toLowerCase(),text.toLowerCase());
+      this.result = this.result.substr(0,idx);
+      for (var i=idx; i<text.length; i++) {
         if (Math.random() > 0.5) {
-          result += temp[i].toUpperCase();
+          this.result += text[i].toLowerCase();
         } else {
-          result += temp[i];
+          this.result += text[i].toUpperCase();
         }
-        
       }
-      return result;
+      return this.result;
+    },
+    getStartingIndex: function(str1, str2) {
+      var min = Math.min(str1.length, str2.length);
+      for (var i=0; i<min; i++) {
+        if (str1[i] != str2[i]) {
+          return i;
+        }
+      }
+      return min;
     }
   }
-})
+});
+Vue.config.devtools = true;
 </script>
 </body>
