@@ -2,7 +2,12 @@ var app = new Vue({
   el: '#app',
   data: {
     input: '',
-    result: ''
+    result: '',
+    selected: 'random',
+    options: [
+      { text: 'RandOM', value: 'random' },
+      { text: 'UpDoWn', value: 'updown' }
+    ]
   },
   methods: {
     change: function (text, flag) {

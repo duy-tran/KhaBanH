@@ -17,13 +17,24 @@
 <body>
 <b-container id="app">
   <h3>Khá BảnH teXt GeNeRatoR</h3>
-  <div class="d-flex flex-row-reverse bd-highlight">
-    <div class="p-2 bd-highlight">
+  <div class="d-flex bd-highlight mb-3">
+    <div class="mr-auto p-2 bd-highlight">
+      <b-form-radio-group
+        id="btnradios1"
+        buttons
+        v-model="selected"
+        :options="options"
+        button-variant="outline-light"
+        name="radiosBtnDefault"
+        />
+      </b-form-group>
+    </div>
+    <div class="ml-auto p-2 bd-highlight">
       <span v-if="result">
         <b-button variant="outline-light" v-on:click="change(input,1)">Again</b-button>
       </span>
     </div>
-    <div style="visibility: hidden;" class="p-2 bd-highlight"><b-button variant="outline-primary">Dummy button</b-button></div>
+    <!-- <div style="visibility: dhidden;" class="p-2 bd-highlight"><b-button variant="outline-primary">Dummy button</b-button></div> -->
   </div>
   <b-row>
     <b-col cols="12" sm="12" lg="6">
